@@ -1,0 +1,26 @@
+{
+  "name": "@taksi/vorto",
+  "description": "Jen la vorto pako",
+  "version": "1.0.0",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@taksi/kerno": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.0.3"
+  },
+  "files": [
+    "build/**/*",
+    "src/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": "git@github.com:uport-project/taksi.git",
+  "author": "Mircea Nistor <mircea.nistor@mesh.xyz>",
+  "license": "Apache-2.0",
+  "keywords": []
+}

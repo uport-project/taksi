@@ -1,0 +1,8 @@
+coverage
+examples
+build/**/*
+**/node_modules/**/*
+docs
+report
+*.json
+*.md

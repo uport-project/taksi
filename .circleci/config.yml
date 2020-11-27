@@ -1,0 +1,159 @@
+version: 2
+aliases:
+  - &check-code-format
+    name: Check code formatting
+    command: yarn prettier --check
+
+  - &restore-cache
+    keys:
+      - v2-dependencies-{{ .Branch }}-{{ checksum "package.json" }}
+      - v2-dependencies-{{ .Branch }}
+
+  - &save-node-cache
+    key: v2-dependencies-{{ .Branch }}-{{ checksum "package.json" }}
+    paths:
+      - node_modules
+
+  - &install-node-dependencies
+    name: Install node dependencies
+    command: yarn install --frozen-lockfile
+
+  - &bootstrap-packages
+    name: Bootstrap packages
+    command: yarn bootstrap
+
+  - &build-packages
+    name: Build packages
+    command: yarn build
+
+defaults: &defaults
+  working_directory: ~/daf
+
+jobs:
+  test-packages:
+    <<: *defaults
+    docker:
+      - image: node:10
+    resource_class: large
+    steps:
+      - checkout
+      - restore_cache: *restore-cache
+      - run: *install-node-dependencies
+      - run: *check-code-format
+      - run: *bootstrap-packages
+      - run: *build-packages
+      - save_cache: *save-node-cache
+      - run: yarn test:integration
+      - run:
+          name: Upload coverage report
+          command: npx codecov
+
+  publish-packages-npm:
+    <<: *defaults
+    docker:
+      - image: node:10
+    resource_class: large
+    steps:
+      - checkout
+      - restore_cache: *restore-cache
+      - run: *install-node-dependencies
+      - run: *bootstrap-packages
+      - run: *build-packages
+      - run:
+          name: Authenticate Github
+          command: |
+            git remote set-url origin https://uport-project:$GITHUB_TOKEN@github.com/uport-project/taksi.git
+            git config --global user.email $GITHUB_EMAIL
+            git config --global user.name $GITHUB_USER
+      - run:
+          name: Authenticate with NPM
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/taksi/.npmrc
+      - run:
+          name: Validate npm authentication
+          command: npm whoami
+      - run:
+          name: Release packages to npm
+          command: npx lerna publish --yes
+
+  publish-beta-packages-npm:
+    <<: *defaults
+    docker:
+      - image: node:10
+    resource_class: large
+    steps:
+      - checkout
+      - restore_cache: *restore-cache
+      - run: *install-node-dependencies
+      - run: *bootstrap-packages
+      - run: *build-packages
+      - run:
+          name: Authenticate Github
+          command: |
+            git remote set-url origin https://uport-project:$GITHUB_TOKEN@github.com/uport-project/taksi.git
+            git config --global user.email $GITHUB_EMAIL
+            git config --global user.name $GITHUB_USER
+      - run:
+          name: Authenticate with NPM
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/taksi/.npmrc
+      - run:
+          name: Validate npm authentication
+          command: npm whoami
+      - run:
+          name: Release packages to npm
+          command: bash scripts/beta-release.sh
+
+#  docker:
+#    working_directory: ~/repo
+#    docker:
+#      - image: circleci/node:8.10
+#    steps:
+#      - checkout
+#      - setup_remote_docker
+#      - run:
+#          name: docker-login
+#          command: echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+#      - run:
+#          name: Build docker image
+#          command: |
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              docker build -t uport/taksi:master .
+#              docker tag uport/taksi:master uport/taksi:latest
+#            else
+#              docker build -t uport/taksi:`echo ${CIRCLE_BRANCH} | sed 's/\//-/g'` .
+#            fi
+#      - run:
+#          name: Push to dockerhub
+#          command: |
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              docker push uport/taksi:latest
+#            else
+#              docker push uport/taksi:`echo ${CIRCLE_BRANCH} | sed 's/\//-/g'`
+#            fi
+
+workflows:
+  version: 2
+
+  verify-test-build:
+    jobs:
+      - test-packages
+      - publish-packages-npm:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - test-packages
+      - publish-beta-packages-npm:
+          filters:
+            branches:
+              only:
+                - beta
+          requires:
+            - test-packages
+#      - docker:
+#          filters:
+#            branches:
+#              only:
+#                - master
+#          requires:
+#            - publish-packages-npm

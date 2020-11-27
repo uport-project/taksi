@@ -1,0 +1,9 @@
+# Default ignored files
+/shelf/
+/.idea
+node_modules
+/coverage/
+/packages/*/api/
+/packages/*/build/
+*tsbuildinfo
+/temp/

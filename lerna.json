@@ -1,0 +1,31 @@
+{
+  "version": "7.0.0-beta.51",
+  "packages": [
+    "packages/*"
+  ],
+  "npmClient": "yarn",
+  "changelog": {
+    "repo": "uport-project/daf",
+    "cacheDir": ".changelog"
+  },
+  "command": {
+    "publish": {
+      "allowBranch": [
+        "master",
+        "beta"
+      ],
+      "conventionalCommits": true,
+      "gitRemote": "origin",
+      "message": "chore(release): %s"
+    },
+    "version": {
+      "allowBranch": [
+        "beta"
+      ],
+      "conventionalCommits": true,
+      "gitRemote": "origin",
+      "message": "chore(beta-release): %s [skip ci]"
+    }
+  },
+  "useWorkspaces": true
+}

@@ -1,0 +1,74 @@
+{
+  "name": "taksi",
+  "private": true,
+  "scripts": {
+    "build": "lerna run build && yarn build:schema-api",
+    "bootstrap": "lerna bootstrap",
+    "build:schema-api": "ts-node --project packages/tsconfig.settings.json ./scripts/extract-api.ts",
+    "test:integration-build": "yarn test:integration-prepare && yarn test:integration-pretty",
+    "test:integration-prepare": "ts-node --project packages/tsconfig.settings.json ./scripts/prepare-integration-tests.ts",
+    "test:integration-pretty": "prettier --write __tests__/shared/documentationExamples.ts",
+    "test:integration": "yarn test:integration-build && yarn test",
+    "test": "jest --config=jest.json --coverage=false",
+    "test:ci": "jest --config=jest.json --maxWorkers=2",
+    "test:watch": "jest --config=jest.json --watch --verbose --coverage=false",
+    "prettier": "pretty-quick",
+    "clean": "rimraf ./packages/*/build ./packages/*/api ./packages/*/node_modules ./packages/*/tsconfig.tsbuildinfo && jest --clearCache",
+    "publish": "lerna publish",
+    "publish-beta": "yarn build && npx lerna publish --canary premajor --preid beta --pre-dist-tag beta"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@microsoft/api-documenter": "^7.11.0",
+    "@microsoft/api-extractor": "^7.12.0",
+    "@microsoft/api-extractor-model": "^7.12.0",
+    "@types/jest": "^26.0.15",
+    "codecov": "^3.6.5",
+    "cross-fetch": "^3.0.5",
+    "husky": "^4.2.5",
+    "jest": "^26.4.2",
+    "jest-fetch-mock": "^3.0.3",
+    "json-schema": "^0.2.5",
+    "lerna": "^3.22.1",
+    "lerna-changelog": "^1.0.1",
+    "oas-resolver": "^2.5.1",
+    "openapi-types": "^7.0.0",
+    "prettier": "2.2.0",
+    "pretty-quick": "^3.1.0",
+    "rimraf": "^3.0.2",
+    "semantic-release": "^17.0.4",
+    "ts-jest": "^26.4.0",
+    "ts-json-schema-generator": "^0.79.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uport-project/daf.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "release": {
+    "branches": [
+      "master",
+      {
+        "name": "beta",
+        "prerelease": true
+      }
+    ]
+  },
+  "dependencies": {
+    "rimraf": "^3.0.2"
+  }
+}
