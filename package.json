@@ -13,7 +13,7 @@
     "test:ci": "jest --config=jest.json --maxWorkers=2",
     "test:watch": "jest --config=jest.json --watch --verbose --coverage=false",
     "prettier": "pretty-quick",
-    "clean": "rimraf ./packages/*/build ./packages/*/api ./packages/*/node_modules ./packages/*/tsconfig.tsbuildinfo && jest --clearCache",
+    "clean": "rimraf ./packages/*/build ./packages/*/api ./packages/*/node_modules ./packages/*/tsconfig.tsbuildinfo ./temp && jest --clearCache",
     "publish": "lerna publish",
     "publish-beta": "yarn build && npx lerna publish --canary premajor --preid beta --pre-dist-tag beta"
   },

@@ -20,11 +20,12 @@
     },
     "version": {
       "allowBranch": [
+        "master",
         "beta"
       ],
       "conventionalCommits": true,
       "gitRemote": "origin",
-      "message": "chore(beta-release): %s [skip ci]"
+      "message": "chore(release): %s [skip ci]"
     }
   },
   "useWorkspaces": true
