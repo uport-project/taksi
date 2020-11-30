@@ -1,7 +1,7 @@
 import { KernoPlugin, PluginMethodMap } from '@taksi/kerno'
 
 /**
- * DID Comm plugin interface for {@link daf-core#Agent}
+ * DID Comm plugin interface for {@link @taksi/kerno#Kerno}
  * @beta
  */
 export interface VortoMethods extends PluginMethodMap {
