@@ -18,6 +18,9 @@
   ],
   "repository": "git@github.com:uport-project/taksi.git",
   "author": "Mircea Nistor <mircea.nistor@mesh.xyz>",
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "Apache-2.0",
   "keywords": []
 }
