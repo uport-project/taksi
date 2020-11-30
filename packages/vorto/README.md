@@ -1,7 +1,5 @@
-# DID Agent Framework Core
+# Word combiner
 
 ### Core functions
 
-- Validates messages
-- Handles actions
-- Bridge between service controllers and identity providers
+- Concatenate words
