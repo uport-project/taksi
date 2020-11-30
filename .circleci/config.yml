@@ -73,7 +73,7 @@ jobs:
           command: npm whoami
       - run:
           name: Release packages to npm
-          command: npx lerna publish --yes
+          command: bash scripts/publish-release.sh
 
   publish-beta-packages-npm:
     <<: *defaults
@@ -100,7 +100,7 @@ jobs:
           command: npm whoami
       - run:
           name: Release packages to npm
-          command: bash scripts/beta-release.sh
+          command: bash scripts/publish-beta-release.sh
 
 #  docker:
 #    working_directory: ~/repo
