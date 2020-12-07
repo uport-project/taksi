@@ -3,17 +3,15 @@
 on:
   push:
     # Sequence of patterns matched against refs/tags
-    branches:
-      - 'beta'
     tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+      - 'v*-beta.*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 name: Create Prerelease
 
 jobs:
   build:
     name: Create Prerelease
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
