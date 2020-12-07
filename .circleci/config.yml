@@ -97,7 +97,7 @@ jobs:
           command: echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" > ~/daf/.npmrc
       - run:
           name: Validate npm authentication
-          command: npm whoami
+          command: npm whoami --registry https://npm.pkg.github.com
       - run:
           name: Release packages to npm
           command: bash scripts/publish-beta-release.sh
