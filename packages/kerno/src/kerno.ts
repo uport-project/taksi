@@ -2,7 +2,7 @@ import { IKerno, TKerno } from './types/KernoAgent'
 import { KernoPlugin, PluginMethodMap } from './types/KernoPlugin'
 
 /**
- * Core config options
+ * Core (kerno) config options
  * @public
  */
 export interface KernoOptions {
