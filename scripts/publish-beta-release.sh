@@ -9,6 +9,6 @@ npx lerna publish --force-publish --no-git-tag-version --canary --preid beta --y
 ## tag the release but don't update package.json or changelog files
 #git add lerna.json
 #git commit -m "chore(beta-release): tag new release [skip ci]"
-export TAGNAME="v$(echo "console.log(require('./lerna.json').version)" | node)"
+export TAGNAME="v$(echo "console.log(require('./packages/kerno/package.json').version)" | node)"
 git tag $TAGNAME && git push origin $TAGNAME
 ##git commit -a -m "chore(beta-release): don't push me"
