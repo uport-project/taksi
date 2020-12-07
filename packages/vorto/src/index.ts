@@ -4,6 +4,3 @@
  * @packageDocumentation
  */
 export { Vorto, VortoMethods } from './vorto'
-
-// const schema = require('../plugin.schema.json')
-// export { schema }
