@@ -13,7 +13,7 @@ export interface KernoOptions {
 }
 
 /**
- * Core (kerno) class.
+ * Core class.
  *
  * Main entry point into the API
  *
