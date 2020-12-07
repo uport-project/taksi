@@ -1,0 +1,33 @@
+# This workflow will create prerelease notes when a github tag is pushed
+
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+name: Create Prerelease
+
+jobs:
+  build:
+    name: Create Prerelease
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Create prerelease notes
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10
+        run: npx conventional-changelog-cli -p angular -r 2 -o temp.changelog.md
+      - name: Create prerelease
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: prerelease ${{ github.ref }}
+          body_path: temp.changelog.md
+          draft: false
+          prerelease: true
