@@ -94,7 +94,7 @@ jobs:
             git config --global user.name $GITHUB_USER
       - run:
           name: Authenticate with NPM
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/daf/.npmrc
+          command: echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" > ~/daf/.npmrc
       - run:
           name: Validate npm authentication
           command: npm whoami
