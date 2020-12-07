@@ -4,7 +4,7 @@ PROJECT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )/.
 
 cd "$PROJECT_DIR"
 
-npx lerna version --force-publish --no-git-tag-version --create-release github --preid beta --yes
+npx lerna version prerelease --force-publish --no-git-tag-version --create-release github --preid beta --yes
 # tag the release but don't update package.json or changelog files
 git add lerna.json
 git commit -m "chore(beta-release): tag new release [skip ci]"
