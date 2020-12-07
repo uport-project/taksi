@@ -8,6 +8,6 @@ npx lerna version --conventional-commits --conventional-prerelease --force-publi
 # tag the release but don't update package.json or changelog files
 git add lerna.json
 git commit -m "chore(beta-release): tag new release [skip ci]"
-git tag $(echo "console.log(require('./lerna.json').version)" | node) && git push -u origin beta --tags
+git tag $(echo "console.log(require('./lerna.json').version)" | node) && git push origin beta --tags
 git commit -a -m "chore(beta-release): don't push me"
 npx lerna publish from-git --canary --pre-dist-tag beta --no-git-reset --yes
