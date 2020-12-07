@@ -62,7 +62,7 @@ jobs:
       - run:
           name: Authenticate Github
           command: |
-            git remote set-url origin https://uport-project:$GITHUB_TOKEN@github.com/uport-project/taksi.git
+            git remote set-url origin https://uport-project:$GH_TOKEN@github.com/uport-project/taksi.git
             git config --global user.email $GITHUB_EMAIL
             git config --global user.name $GITHUB_USER
       - run:
@@ -89,7 +89,7 @@ jobs:
       - run:
           name: Authenticate Github
           command: |
-            git remote set-url origin https://uport-project:$GITHUB_TOKEN@github.com/uport-project/taksi.git
+            git remote set-url origin https://uport-project:$GH_TOKEN@github.com/uport-project/taksi.git
             git config --global user.email $GITHUB_EMAIL
             git config --global user.name $GITHUB_USER
       - run:
