@@ -26,7 +26,7 @@ export class Kerno implements IKerno {
   private context: Object = {}
 
   /**
-   * Constructs a new instance of the `Agent` class
+   * Constructs a new instance of the `Kerno` class
    *
    * @param options - Configuration options
    * @public
