@@ -4,7 +4,7 @@ on:
   push:
     # Sequence of patterns matched against refs/tags
     tags:
-      - 'v*-beta.*' # Push events to matching v*, i.e. v1.0, v20.15.10
+      - 'pre*-beta.*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 name: Create Prerelease
 
@@ -22,6 +22,7 @@ jobs:
       - name: Generate notes
         id: gen_notes
         run: npx conventional-changelog-cli -p angular -r 2 -o temp.changelog.md
+      - run: cat temp.changelog.md
       - name: Create GH prerelease
         id: create_release
         uses: actions/create-release@v1
