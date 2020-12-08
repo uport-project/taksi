@@ -21,7 +21,7 @@ jobs:
           node-version: 10
       - name: Generate notes
         id: gen_notes
-        run: npx conventional-changelog-cli -p angular -o temp.changelog.md
+        run: npx conventional-changelog-cli -p angular -r 2 -o temp.changelog.md
       - name: Create GH prerelease
         id: create_release
         uses: actions/create-release@v1
