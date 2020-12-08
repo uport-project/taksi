@@ -11,7 +11,7 @@ export interface VortoMethods extends PluginMethodMap {
    * @example
    * ```typescript
    * const frazo = await agent.senduVorton({ vortoj: ['foo', 'bar'] })
-   * expect(frazo).toEqual('foo bar')
+   * expect(frazo).toEqual('foo.bar')
    * ```
    *
    * @param args - Arguments necessary for sending a DIDComm message
@@ -40,6 +40,6 @@ export class Vorto implements KernoPlugin {
 
   /** {@inheritdoc VortoMethods.senduVorton} */
   async senduVorton(args: { vortoj: string[] }, context?: any): Promise<string> {
-    return args.vortoj.join(' ')
+    return args.vortoj.join('.')
   }
 }
