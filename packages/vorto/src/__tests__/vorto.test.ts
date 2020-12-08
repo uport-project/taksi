@@ -9,6 +9,6 @@ describe('vorto', () => {
     })
 
     const result = await agent.senduVorton({ vortoj: ['foo', 'bar'] })
-    expect(result).toBe('foo.bar')
+    expect(result).toBe('foo bar')
   })
 })
