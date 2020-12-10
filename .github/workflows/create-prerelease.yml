@@ -22,7 +22,11 @@ jobs:
       - name: Generate notes
         id: gen_notes
         run: npx conventional-changelog-cli -p angular -r 2 -t pre -o temp.changelog.md --verbose
-      - run: export GIT_TAG_NAME=$(git tag --points-at HEAD | xargs)
+      - name: compute tag name
+        uses: './'
+        env: # Define environment vars
+          # variable_name: value
+          GIT_TAG_NAME: $(git tag --points-at HEAD | xargs)
       - name: Create GH prerelease
         id: create_release
         uses: actions/create-release@v1
