@@ -29,8 +29,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
           GIT_TAG_NAME: $(git tag --points-at HEAD | xargs)
         with:
-          tag_name: ${{ GIT_TAG_NAME }}
-          release_name: ${{ GIT_TAG_NAME }}
+          tag_name: $GIT_TAG_NAME
+          release_name: $GIT_TAG_NAME
           body_path: temp.changelog.md
           draft: false
           prerelease: true
