@@ -18,18 +18,19 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 10
+      - run: git fetch && git pull
       - name: Generate notes
         id: gen_notes
         run: npx conventional-changelog-cli -p angular -r 2 -t pre -o temp.changelog.md --verbose
-      - run: cat temp.changelog.md
+      - run: export GIT_TAG_NAME=$(git tag --points-at HEAD | xargs)
       - name: Create GH prerelease
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
+          tag_name: ${{ GIT_TAG_NAME }}
+          release_name: ${{ GIT_TAG_NAME }}
           body_path: temp.changelog.md
           draft: false
           prerelease: true
