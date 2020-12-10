@@ -1,3 +1,5 @@
+// nop
+
 import { IKerno, TKerno } from './types/KernoAgent'
 import { KernoPlugin, PluginMethodMap } from './types/KernoPlugin'
 
