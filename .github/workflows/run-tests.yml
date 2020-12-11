@@ -6,8 +6,6 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-18.04
-    env:
-      NPM_TOKEN: ${{secrets.NPM_TOKEN}}
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js
@@ -24,11 +22,6 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-
-      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
-      - run: pwd
-      - run: npm whoami
-
       - run: yarn install --frozen-lockfile
       - run: yarn bootstrap
       - run: yarn build
