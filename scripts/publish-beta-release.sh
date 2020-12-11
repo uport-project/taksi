@@ -6,7 +6,7 @@ PROJECT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )/.
 
 cd "$PROJECT_DIR"
 
-npx lerna publish --conventional-prerelease --force-publish --canary --no-git-reset --no-git-tag-version --preid beta --pre-dist-tag beta --yes
+npx lerna publish --conventional-prerelease --force-publish --canary --no-git-reset --no-git-tag-version --include-merged-tags --preid beta --pre-dist-tag beta --yes
 
 # npx lerna publish --force-publish --no-git-tag-version --canary --preid beta --yes --pre-dist-tag beta --no-git-reset --create-release github
 
