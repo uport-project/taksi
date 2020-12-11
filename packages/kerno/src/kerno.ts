@@ -24,7 +24,7 @@ export class Kerno implements IKerno {
   private plugins: KernoPlugin[]
   private methods: PluginMethodMap = {}
   private protectedMethods = ['execute', 'emit']
-  private context: Object = {}
+  private context: Record<string, unknown> = {}
 
   /**
    * Constructs a new instance of the `Kerno` class
@@ -45,7 +45,7 @@ export class Kerno implements IKerno {
 
     for (const method of Object.keys(this.methods)) {
       if (!this.protectedMethods.includes(method)) {
-        //@ts-ignore
+        //@ts-ignore: exposing the plugin methods directly as agent methods
         this[method] = async (args: any) => this.execute(method, args)
       }
     }
