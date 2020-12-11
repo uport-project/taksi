@@ -1,7 +1,7 @@
 {
   "name": "@taksi/vorto",
   "description": "Jen la vorto pako",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
