@@ -23,7 +23,7 @@ export interface VortoMethods extends PluginMethodMap {
 
 /**
  * Vorto plugin for {@link @taksi/kerno#Kerno}
- *
+ * It joins words together!!
  * @remarks Be advised that this spec is still not final and that this protocol may need to change.
  *
  * @beta

@@ -13,7 +13,7 @@ export interface PluginMethod {
 export interface PluginMethodMap extends Record<string, PluginMethod> {}
 
 /**
- * Agent plugin interface
+ * Kerno plugin interface
  * @public
  */
 export interface KernoPlugin {
