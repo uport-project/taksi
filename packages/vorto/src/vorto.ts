@@ -2,6 +2,7 @@ import { KernoPlugin, PluginMethodMap } from '@taksi/kerno'
 
 /**
  * DID Comm plugin interface for {@link @taksi/kerno#Kerno}
+ * //nop
  * @beta
  */
 export interface VortoMethods extends PluginMethodMap {
