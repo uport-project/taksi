@@ -1,10 +1,13 @@
-name: Run tests
+name: Release next
 on:
-  push:
-    branches:
-      - '*'
+  workflow_run:
+    workflows: ['Run Tests']
+    branches: [next]
+    types:
+      - completed
+
 jobs:
-  build-and-test:
+  semantic-release:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -25,5 +28,4 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn bootstrap
       - run: yarn build
-      - run: yarn test:integration
-      - run: yarn lint
+      - run: scripts/publish-canary-release.sh
