@@ -10,7 +10,7 @@ export interface PluginMethod {
  * Plugin method map interface
  * @public
  */
-export interface PluginMethodMap extends Record<string, PluginMethod> {}
+export type PluginMethodMap = Record<string, PluginMethod>
 
 /**
  * Kerno plugin interface
