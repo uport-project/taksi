@@ -17,15 +17,6 @@
       "conventionalCommits": true,
       "gitRemote": "origin",
       "message": "chore(release): %s [skip ci]"
-    },
-    "version": {
-      "allowBranch": [
-        "master",
-        "beta"
-      ],
-      "conventionalCommits": true,
-      "gitRemote": "origin",
-      "message": "chore(release): %s [skip ci]"
     }
   },
   "useWorkspaces": true
