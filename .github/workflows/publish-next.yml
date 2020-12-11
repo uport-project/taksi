@@ -1,7 +1,7 @@
 name: Release next
 on:
   workflow_run:
-    workflows: ['Run Tests']
+    workflows: ['Run tests']
     branches: [next]
     types:
       - completed
