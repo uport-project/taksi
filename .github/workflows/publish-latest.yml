@@ -17,10 +17,21 @@ jobs:
       GH_EMAIL: ${{secrets.GH_EMAIL}}
     steps:
       - uses: actions/checkout@v2
+      - run: git config user.email $GH_EMAIL
+      - run: git config user.name $GH_USER
+      - run: git remote set-url origin https://$GITHUB_ACTOR:$GH_TOKEN@github.com/uport-project/taksi.git
+      - name: Checkout and pull branch
+        run: git checkout "${GITHUB_REF:11}" && git pull
       - uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-          registry-url: https://registry.npmjs.org
+      - name: Authenticate with Registry
+        run: |
+          yarn logout
+          echo "@taksi:registry=http://registry.npmjs.org/" > .npmrc
+          echo "registry=https://registry.npmjs.org/" >> .npmrc
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+          npm whoami
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -34,10 +45,5 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn bootstrap
       - run: yarn build
-      - run: git config user.email $GH_EMAIL
-      - run: git config user.name $GH_USER
-      - run: git remote set-url origin https://uport-project:$GH_TOKEN@github.com/uport-project/taksi.git
-      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
-      - run: npm whoami
       - name: Run publishing script
         run: scripts/publish-release.sh
