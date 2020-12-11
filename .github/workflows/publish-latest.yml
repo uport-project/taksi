@@ -31,7 +31,6 @@ jobs:
       - name: Run publishing script
         env:
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           GH_TOKEN: ${{secrets.GH_TOKEN}}
           GH_USER: ${{secrets.GH_USER}}
           GH_EMAIL: ${{secrets.GH_EMAIL}}
