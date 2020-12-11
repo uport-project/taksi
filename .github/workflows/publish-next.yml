@@ -31,5 +31,6 @@ jobs:
       - name: Run publishing script
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
           GH_TOKEN: ${{secrets.GH_TOKEN}}
         run: scripts/publish-canary-release.sh
