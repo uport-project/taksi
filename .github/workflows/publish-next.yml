@@ -9,6 +9,11 @@ on:
 jobs:
   semantic-release:
     runs-on: ubuntu-18.04
+    env:
+      NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+      GH_TOKEN: ${{secrets.GH_TOKEN}}
+      GH_USER: ${{secrets.GH_USER}}
+      GH_EMAIL: ${{secrets.GH_EMAIL}}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -28,10 +33,7 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn bootstrap
       - run: yarn build
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+      - run: npm whoami
       - name: Run publishing script
-        env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-          GH_TOKEN: ${{secrets.GH_TOKEN}}
-          GH_USER: ${{secrets.GH_USER}}
-          GH_EMAIL: ${{secrets.GH_EMAIL}}
         run: scripts/publish-canary-release.sh
