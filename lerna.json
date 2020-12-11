@@ -11,8 +11,8 @@
   "command": {
     "publish": {
       "allowBranch": [
-        "master",
-        "beta"
+        "main",
+        "next"
       ],
       "conventionalCommits": true,
       "gitRemote": "origin",
