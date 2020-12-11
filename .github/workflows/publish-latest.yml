@@ -16,12 +16,12 @@ jobs:
       GH_USER: ${{secrets.GH_USER}}
       GH_EMAIL: ${{secrets.GH_EMAIL}}
     steps:
+      - run: git config user.email $GH_EMAIL
+      - run: git config user.name $GH_USER
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
           token: $GH_TOKEN
-      - run: git config user.email $GH_EMAIL
-      - run: git config user.name $GH_USER
       - uses: actions/setup-node@v1
         with:
           node-version: '12.x'
