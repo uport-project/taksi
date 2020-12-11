@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/uport-project/taksi/compare/v2.0.0...v3.0.0) (2020-12-11)
+
+
+### Bug Fixes
+
+* **kerno:** simulate a small fix ([e122515](https://github.com/uport-project/taksi/commit/e122515eef9b494384bb45a2ffa6ee4d2b0e8cc1))
+* **kerno:** simulate one more small fix ([2ea059e](https://github.com/uport-project/taksi/commit/2ea059ebbba5e419d59bfcad36bcee8825d59fb1))
+
+
+### Features
+
+* **kerno:** and another breaker ([51b1128](https://github.com/uport-project/taksi/commit/51b1128167735f8990f82b3cda85daf186c52360))
+* **kerno:** feature for kerno ([51369f3](https://github.com/uport-project/taksi/commit/51369f3149793a217af57ea5d6108320c085296f))
+
+
+### BREAKING CHANGES
+
+* **kerno:** check for me in changelog 1
+
+
+
+
+
 # [2.0.0](https://github.com/uport-project/taksi/compare/v1.3.2-beta.12+a161952...v2.0.0) (2020-12-08)
 
 
