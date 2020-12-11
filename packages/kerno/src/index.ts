@@ -3,6 +3,8 @@
  * {@link @taksi/kerno#KernoPlugin} interfaces
  *
  * conflicting change in beta
+ * resolved manually against
+ * conflicting change in master
  *
  * @packageDocumentation
  */
