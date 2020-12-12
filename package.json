@@ -14,7 +14,9 @@
     "test:watch": "jest --config=jest.json --watch --verbose --coverage=false",
     "lint": "eslint . --ext .ts",
     "prettier": "pretty-quick",
-    "clean": "rimraf ./packages/*/build ./packages/*/api ./packages/*/node_modules ./packages/*/tsconfig.tsbuildinfo ./temp && jest --clearCache"
+    "clean": "rimraf ./packages/*/build ./packages/*/api ./packages/*/node_modules ./packages/*/tsconfig.tsbuildinfo ./temp && jest --clearCache",
+    "publish:latest": "lerna publish --conventional-commits --include-merged-tags --no-git-reset --create-release github --yes",
+    "publish:next": "lerna publish --conventional-prerelease --force-publish --canary --no-git-reset --no-git-tag-version --include-merged-tags --preid next --pre-dist-tag next --yes"
   },
   "workspaces": [
     "packages/*"

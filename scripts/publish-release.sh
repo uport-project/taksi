@@ -7,4 +7,4 @@ cd "$PROJECT_DIR"
 
 npm whoami
 
-npx lerna publish --conventional-commits --include-merged-tags --no-git-reset  --create-release github --yes
+npx lerna publish --conventional-commits --include-merged-tags --no-git-reset --create-release github --yes
