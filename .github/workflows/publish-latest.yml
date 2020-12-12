@@ -20,13 +20,15 @@ jobs:
       - run: git remote set-url origin https://uport-project:$GH_TOKEN@github.com/uport-project/taksi.git
       - run: git config user.name $GH_USER
       - run: git config user.email $GH_EMAIL
+
       - uses: actions/setup-node@v1
         with:
           node-version: '12.x'
           registry-url: https://registry.npmjs.org
           scope: '@taksi'
-      - name: Authenticate with Registry
-        run: npm whoami
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+      - run: npm whoami
+
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -37,6 +39,7 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+
       - run: yarn install --frozen-lockfile
       - run: yarn bootstrap
       - run: yarn build
