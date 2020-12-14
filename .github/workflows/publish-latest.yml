@@ -30,6 +30,7 @@ jobs:
           scope: '@taksi'
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
       - run: npm whoami
+      - run: yarn config list
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
