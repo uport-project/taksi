@@ -26,10 +26,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-          registry-url: https://registry.npmjs.org
-          scope: '@taksi'
-      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
-      - run: npm whoami
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
