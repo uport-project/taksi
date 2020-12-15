@@ -15,8 +15,8 @@
     "lint": "eslint . --ext .ts",
     "prettier": "pretty-quick",
     "clean": "rimraf ./packages/*/build ./packages/*/api ./packages/*/node_modules ./packages/*/tsconfig.tsbuildinfo ./temp && jest --clearCache",
-    "publish:latest": "lerna publish --include-merged-tags --create-release github --yes --registry https://registry.npmjs.org/:_authToken=${NPM_TOKEN}",
-    "publish:next": "lerna publish --conventional-prerelease --force-publish --canary --no-git-tag-version --include-merged-tags --preid next --pre-dist-tag next --yes --registry https://registry.npmjs.org/:_authToken=${NPM_TOKEN}"
+    "publish:latest": "lerna publish --include-merged-tags --create-release github --yes",
+    "publish:next": "lerna publish --conventional-prerelease --force-publish --canary --no-git-tag-version --include-merged-tags --preid next --pre-dist-tag next --yes"
   },
   "workspaces": [
     "packages/*"

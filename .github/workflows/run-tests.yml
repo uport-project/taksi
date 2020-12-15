@@ -42,8 +42,9 @@ jobs:
       - run: |
           echo "@taksi:registry=http://registry.npmjs.org/" > .npmrc
           echo "registry=https://registry.npmjs.org/" > .npmrc
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
           npm whoami
-      #          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+
       - name: publish @latest when on main
         if: github.ref == 'refs/heads/main'
         run: yarn publish:latest
