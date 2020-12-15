@@ -34,6 +34,8 @@ jobs:
       - run: yarn lint
       - run: npx codecov
 
+      - run: npx lerna changed --include-merged-tags --conventional-graduate -l
+
       - run: git remote set-url origin https://uport-project:$GH_TOKEN@github.com/uport-project/taksi.git
       - run: git config user.name $GH_USER
       - run: git config user.email $GH_EMAIL
