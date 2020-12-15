@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/uport-project/taksi/compare/v3.2.10...v4.0.0) (2020-12-15)
+
+
+### Bug Fixes
+
+* **vorto:** simulate a simple fix ([5649ec2](https://github.com/uport-project/taksi/commit/5649ec2ac6c9176920a5f8c02eec5d0b5bfe6c2b))
+
+
+### Features
+
+* **vorto:** simulate breaking change ([0aa4f89](https://github.com/uport-project/taksi/commit/0aa4f8942d78c58498101f61f677a2669b3a7640))
+
+
+### BREAKING CHANGES
+
+* **vorto:** this forces a new major release
+Does this line also appear in release notes?
+
+
+
+
+
 ## [3.2.10](https://github.com/uport-project/taksi/compare/v3.2.9...v3.2.10) (2020-12-15)
 
 **Note:** Version bump only for package @taksi/vorto
