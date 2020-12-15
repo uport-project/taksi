@@ -3,7 +3,7 @@ import { KernoPlugin, PluginMethodMap } from './types/KernoPlugin'
 
 /**
  * Core config options
- * //nop
+ *
  * @public
  */
 export interface KernoOptions {
