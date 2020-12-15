@@ -36,14 +36,19 @@ jobs:
       - run: yarn lint
       - run: npx codecov
 
-      - run: git remote set-url origin https://uport-project:$GH_TOKEN@github.com/uport-project/taksi.git
-      - run: git config user.name $GH_USER
-      - run: git config user.email $GH_EMAIL
-      - run: |
+      - name: setup git coordinates
+        run: |
+          git remote set-url origin https://uport-project:$GH_TOKEN@github.com/uport-project/taksi.git
+          git config user.name $GH_USER
+          git config user.email $GH_EMAIL
+
+      - name: setup npm registry
+        run: |
           echo "@taksi:registry=http://registry.npmjs.org/" > .npmrc
           echo "registry=https://registry.npmjs.org/" >> .npmrc
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
           npm whoami
+
       - name: publish @latest when on main
         if: github.ref == 'refs/heads/main'
         run: yarn publish:latest
