@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.10](https://github.com/uport-project/taksi/compare/v3.2.9...v3.2.10) (2020-12-15)
+
+**Note:** Version bump only for package @taksi/vorto
+
+
+
+
+
 ## 3.2.9 (2020-12-15)
 
 **Note:** Version bump only for package @taksi/vorto
