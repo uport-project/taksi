@@ -2,6 +2,12 @@ name: tests
 on: [push]
 jobs:
   build-test-publish:
+    env:
+      NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+      NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      GH_TOKEN: ${{secrets.GH_TOKEN}}
+      GH_USER: ${{secrets.GH_USER}}
+      GH_EMAIL: ${{secrets.GH_EMAIL}}
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -9,6 +15,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
+
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -19,6 +26,7 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+
       - run: yarn install --frozen-lockfile
       - run: yarn bootstrap
       - run: yarn build
@@ -26,22 +34,14 @@ jobs:
       - run: yarn lint
       - run: npx codecov
 
+      - run: git remote set-url origin https://uport-project:$GH_TOKEN@github.com/uport-project/taksi.git
+      - run: git config user.name $GH_USER
+      - run: git config user.email $GH_EMAIL
+
       - name: publish @latest when on main
         if: github.ref == 'refs/heads/main'
-        env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-          GH_TOKEN: ${{secrets.GH_TOKEN}}
-          GH_USER: ${{secrets.GH_USER}}
-          GH_EMAIL: ${{secrets.GH_EMAIL}}
         run: yarn publish:latest
 
       - name: publish @next when on next
         if: github.ref == 'refs/heads/next'
-        env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-          GH_TOKEN: ${{secrets.GH_TOKEN}}
-          GH_USER: ${{secrets.GH_USER}}
-          GH_EMAIL: ${{secrets.GH_EMAIL}}
         run: yarn publish:next
