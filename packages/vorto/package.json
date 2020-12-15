@@ -1,14 +1,14 @@
 {
   "name": "@taksi/vorto",
   "description": "Jen la vorto pako",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
     "build": "tsc"
   },
   "dependencies": {
-    "@taksi/kerno": "^4.1.0"
+    "@taksi/kerno": "^4.2.0"
   },
   "devDependencies": {
     "typescript": "^4.0.3"

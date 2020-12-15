@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/uport-project/taksi/compare/v4.1.0...v4.2.0) (2020-12-15)
+
+
+### Features
+
+* **kerno:** simulate a feature commit ([39603fd](https://github.com/uport-project/taksi/commit/39603fd5048ba7f19a6a4d89509d95f915c83af7))
+
+
+
+
+
 # [4.1.0](https://github.com/uport-project/taksi/compare/v4.0.0...v4.1.0) (2020-12-15)
 
 
