@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.2.8 (2020-12-15)
+
+
+### Bug Fixes
+
+* **vorto:** simulate a fix ([#15](https://github.com/uport-project/taksi/issues/15)) ([9fadc94](https://github.com/uport-project/taksi/commit/9fadc9408b090134622cb1a72a30f9e25e3f715a))
+
+
+
+
+
 ## 3.2.7 (2020-12-15)
 
 **Note:** Version bump only for package @taksi/kerno
