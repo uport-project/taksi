@@ -17,6 +17,7 @@ export interface KernoOptions {
  * Core class.
  *
  * Main entry point into the API
+ * //nop
  *
  * @public
  */
