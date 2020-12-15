@@ -18,7 +18,12 @@ export default (testContext: {
     afterAll(testContext.tearDown)
 
     //DO NOT EDIT MANUALLY START
-    // nop
+
+    it('vorto-VortoMethods-senduVorton example', async () => {
+      const frazo = await agent.senduVorton({ vortoj: ['foo', 'bar'] })
+      expect(frazo).toEqual('foo bar')
+    })
+
     //DO NOT EDIT MANUALLY END
   })
 }
