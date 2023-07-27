@@ -2,13 +2,17 @@
   "name": "@taksi/kerno",
   "description": "Jen la kerna pako",
   "version": "4.2.0",
+  "type": "module",
   "main": "build/index.js",
+  "exports": {
+    ".": "./build/index.js"
+  },
   "types": "build/index.d.ts",
   "scripts": {
     "build": "tsc"
   },
   "devDependencies": {
-    "typescript": "^4.0.3"
+    "typescript": "5.1.6"
   },
   "files": [
     "build/**/*",

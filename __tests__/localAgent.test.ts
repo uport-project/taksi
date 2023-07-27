@@ -1,6 +1,8 @@
 import { createKerno, KernoOptions, TKerno } from '../packages/kerno/src'
 import { Vorto, VortoMethods } from '../packages/vorto/src'
 
+import { jest } from '@jest/globals'
+
 jest.setTimeout(30000)
 
 // Shared tests

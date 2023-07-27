@@ -1,5 +1,5 @@
-import { TKerno } from '../../packages/kerno/src/types/KernoAgent'
-import { VortoMethods } from '../../packages/vorto/src/vorto'
+import { TKerno } from '../../packages/kerno/src'
+import { VortoMethods } from '../../packages/vorto/src'
 
 type ConfiguredAgent = TKerno<VortoMethods>
 

@@ -8,7 +8,9 @@ interface RemoveContext<T extends PluginMethod> {
  * Agent that can execute methods
  * @public
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface IKerno {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   execute: <A = any, R = any>(method: string, args: A) => Promise<R>
 }
 
@@ -18,5 +20,4 @@ export interface IKerno {
  */
 export type TKerno<T extends PluginMethodMap> = {
   [P in keyof T]: RemoveContext<T[P]>
-} &
-  IKerno
+} & IKerno

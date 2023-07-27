@@ -3,6 +3,7 @@
  * @public
  */
 export interface PluginMethod {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (args: any, context: any): Promise<any>
 }
 
