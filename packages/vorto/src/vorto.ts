@@ -19,6 +19,7 @@ export interface VortoMethods extends PluginMethodMap {
    * @param context - This reserved param is automatically added and handled by the framework, *do not override*
    * @public
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   senduVorton(args: { vortoj: string[] }, context?: any): Promise<string>
 }
 
@@ -40,6 +41,7 @@ export class Vorto implements KernoPlugin {
   }
 
   /** {@inheritdoc VortoMethods.senduVorton} */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
   async senduVorton(args: { vortoj: string[] }, context?: any): Promise<string> {
     return args.vortoj.join(' ')
   }

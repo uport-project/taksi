@@ -2,13 +2,18 @@
   "name": "@taksi/kerno",
   "description": "Jen la kerna pako",
   "version": "4.2.0",
+  "type": "module",
   "main": "build/index.js",
+  "exports": {
+    ".": "./build/index.js"
+  },
   "types": "build/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "extract-api": "node ../cli/bin/veramo.js dev extract-api"
   },
   "devDependencies": {
-    "typescript": "^4.0.3"
+    "typescript": "5.1.6"
   },
   "files": [
     "build/**/*",

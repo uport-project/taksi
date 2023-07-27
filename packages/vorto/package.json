@@ -2,16 +2,20 @@
   "name": "@taksi/vorto",
   "description": "Jen la vorto pako",
   "version": "4.2.0",
+  "type": "module",
   "main": "build/index.js",
+  "exports": {
+    ".": "./build/index.js"
+  },
   "types": "build/index.d.ts",
   "scripts": {
     "build": "tsc"
   },
   "dependencies": {
-    "@taksi/kerno": "^4.2.0"
+    "@taksi/kerno": "workspace:*"
   },
   "devDependencies": {
-    "typescript": "^4.0.3"
+    "typescript": "5.1.6"
   },
   "files": [
     "build/**/*",

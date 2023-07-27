@@ -46,7 +46,8 @@ export class Kerno implements IKerno {
 
     for (const method of Object.keys(this.methods)) {
       if (!this.protectedMethods.includes(method)) {
-        //@ts-ignore: exposing the plugin methods directly as agent methods
+        // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         this[method] = async (args: any) => this.execute(method, args)
       }
     }
@@ -66,6 +67,7 @@ export class Kerno implements IKerno {
    * ```
    * @public
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async execute<P = any, R = any>(method: string, args: P): Promise<R> {
     if (!this.methods[method]) throw Error('Method not available: ' + method)
     const _args = args || {}
@@ -81,7 +83,7 @@ export class Kerno implements IKerno {
  * Helper function to create a new instance of the {@link Kerno} class with correct type
  *
  * @remarks
- * Use {@link TAgent} to configure agent type (list of available methods) for autocomplete in IDE
+ * Use {@link TKerno} to configure agent type (list of available methods) for autocomplete in IDE
  *
  * @param options - Agent configuration options
  * @returns configured agent

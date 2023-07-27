@@ -1,6 +1,7 @@
 # Default ignored files
 /shelf/
 /.idea
+.vscode/
 node_modules
 /coverage/
 /packages/*/api/
@@ -8,3 +9,5 @@ node_modules
 *tsbuildinfo
 /temp/
 /.npmrc
+docs/
+

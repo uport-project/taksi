@@ -2,10 +2,10 @@
 
 ## What's here
 
-* we have a `master` branch that can automatically publish using lerna conventional commits
-* and a `beta` branch that pushes canary releases only to npm
-* whenever a push is made to `master`, it is merged back to `beta`
-  as long as there are no conflicts (using a github action)
+* we have a `main` branch that can automatically publish using lerna conventional commits
+* and a `next` branch that pushes canary releases only to npm
+* whenever a push is made to `main`, it is automatically merged back to `next`
+  as long as there are no conflicts (using a GitHub workflow)
 
 ## Gotchas
 
@@ -23,14 +23,14 @@ previous release and the tag.
 With the setup that exists in this repo, one can switch between several workflows.
 Ideally just adopt one and stick to it, but one is not forced to do that.
 
-Use squash-merge for PRs and merge commits between `master` and `beta`.
+Use squash-merge for PRs and merge commits between `main` and `next`.
 Squash-merging allows maintainers to reformat commit messages to add references to
 issues and signal breaking changes.
-Merge commits between `master` and `beta` are useful for long-running beta development.
+Merge commits between `main` and `next` are useful for long-running beta development.
 
 ### 1. continuous semver
 
-* use the `master` branch with continuous integration for everything
+* use the `main` branch with continuous integration for everything
 * this is the non-romantic recommendation from semantic-release,
   only applied to all packages at once using lerna
   
@@ -44,10 +44,10 @@ Merge commits between `master` and `beta` are useful for long-running beta devel
 
 * use main branch with continuous integration for fixes and features
 * use beta branch for breaking changes
-  In practice, we would have to figure out which PRs create breaking changes and rebase them on `beta`
-  as well as taking care to use proper commit message discipline
-* breaking changes can be merged back into main predictably by making a PR from `beta` to `master`
-  This triggers the usual semantic release that will bump the major version
+  In practice, we would have to figure out which PRs create breaking changes and rebase them on `next`
+  as well as taking care to use proper commit message discipline.
+* breaking changes can be merged back into `main` predictably by making a PR from `next` to `main`.
+  This triggers the usual semantic release that will bump the major version.
 
 **PRO**:
   maintainers don't get attached to most release numbers, and breaking changes can be grouped together
@@ -57,8 +57,8 @@ Merge commits between `master` and `beta` are useful for long-running beta devel
 
 ### 3. `@next` and `@latest`
 
-* always develop against the `beta` branch which would trigger automatic `@next` releases
-* merge `beta` back into `main` periodically to turn `@next` into the official `@latest`
+* always develop against the `next` branch which would trigger automatic `@next` releases
+* merge `next` back into `main` periodically to turn `@next` into the official `@latest`
 
 **PRO**:
   allows predictable release cycles, while relieving maintainers from the burden of release numbers  

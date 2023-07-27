@@ -1,19 +1,19 @@
 import { resolve } from 'path'
-import { writeFileSync, readFileSync, mkdir } from 'fs'
+import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from 'fs'
 import * as TJS from 'ts-json-schema-generator'
-import { existsSync, readdirSync, copyFileSync, mkdirSync, unlinkSync } from 'fs'
 import { DocFencedCode } from '@microsoft/tsdoc'
 import {
-  ApiModel,
-  ApiPackage,
-  ApiParameterListMixin,
-  ApiDocumentedItem,
-  ApiReturnTypeMixin,
   ApiMethodSignature,
+  ApiModel,
+  ApiParameterListMixin,
+  ApiReturnTypeMixin,
 } from '@microsoft/api-extractor-model'
 
 const outputFolder = './temp'
-const inputFolders = ['packages/kerno/api/', 'packages/vorto/api/']
+const inputFolders = [
+  'packages/kerno/api/',
+  'packages/vorto/api/',
+]
 
 if (!existsSync(resolve(outputFolder))) {
   console.log('Creating', outputFolder)
@@ -26,7 +26,6 @@ if (!existsSync(resolve(outputFolder))) {
 }
 
 for (const inputFolder of inputFolders) {
-  mkdirSync(inputFolder, { recursive: true })
   readdirSync(resolve(inputFolder)).forEach((file) => {
     console.log('Copying', resolve(outputFolder, file))
     copyFileSync(resolve(inputFolder, file), resolve(outputFolder, file))
@@ -55,6 +54,8 @@ for (const packageName of Object.keys(agentPlugins)) {
   const generator = TJS.createGenerator({
     path: resolve('packages/' + packageName + '/src/index.ts'),
     encodeRefs: false,
+    // TODO: https://github.com/transmute-industries/vc.js/issues/60
+    skipTypeCheck: true,
   })
 
   const apiModel: ApiModel = new ApiModel()
@@ -82,10 +83,11 @@ for (const packageName of Object.keys(agentPlugins)) {
       const methodSignature = member as ApiMethodSignature
       method.description = methodSignature.tsdocComment?.summarySection
         ?.getChildNodes()[0]
-        //@ts-ignore
+        // @ts-ignore
         ?.getChildNodes()[0]?.text
 
-      method.example = methodSignature.tsdocComment?.customBlocks[0]?.content?.getChildNodes()[1] as DocFencedCode
+      method.example =
+        methodSignature.tsdocComment?.customBlocks[0]?.content?.getChildNodes()[1] as unknown as DocFencedCode
 
       method.description = method.description || ''
 
