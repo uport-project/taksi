@@ -184,7 +184,7 @@ jobs:
 
       - name: 'Setup git coordinates'
         run: |
-          git remote set-url origin https://$GH_USER:$GH_TOKEN@github.com/uport-project/taksi.git
+          git remote set-url origin https://${{secrets.GH_USER}}:${{secrets.GH_TOKEN}}@github.com/uport-project/taksi.git
           git config user.name $GH_USER
           git config user.email $GH_EMAIL
 
