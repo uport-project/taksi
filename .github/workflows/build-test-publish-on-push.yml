@@ -188,7 +188,6 @@ jobs:
           git remote add origin origin https://${{secrets.GH_USER}}:${{secrets.GH_TOKEN}}@github.com/uport-project/taksi.git
           git remote -v
           git fetch
-#          git remote set-url origin https://${{secrets.GH_USER}}:${{secrets.GH_TOKEN}}@github.com/uport-project/taksi.git
           git config user.name $GH_USER
           git config user.email $GH_EMAIL
 
