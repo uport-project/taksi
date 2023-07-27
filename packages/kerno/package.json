@@ -9,8 +9,7 @@
   },
   "types": "build/index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "extract-api": "node ../cli/bin/veramo.js dev extract-api"
+    "build": "tsc"
   },
   "devDependencies": {
     "typescript": "5.1.6"
