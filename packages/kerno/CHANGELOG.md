@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.1](https://github.com/uport-project/taksi/compare/v4.2.0...v4.2.1) (2023-07-27)
+
+
+### Bug Fixes
+
+* **ci:** update repository links ([e8b3b0d](https://github.com/uport-project/taksi/commit/e8b3b0d912fc200d60299a64505c9119879a7e8c))
+
+
+
+
+
 # [4.2.0](https://github.com/uport-project/taksi/compare/v4.1.0...v4.2.0) (2020-12-15)
 
 

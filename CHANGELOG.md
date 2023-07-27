@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.1](https://github.com/uport-project/taksi/compare/v4.2.0...v4.2.1) (2023-07-27)
+
+
+### Bug Fixes
+
+* **ci:** don't persist checkout credentials ([5d0c0b4](https://github.com/uport-project/taksi/commit/5d0c0b4394667105ceffce32a29e60b7474ad0d1))
+* **ci:** don't persist github credentials before publish ([9a5c5ca](https://github.com/uport-project/taksi/commit/9a5c5ca6cc6c98513d4b831019e01abe21b3aa74))
+* **ci:** force reset origin ([c0dc209](https://github.com/uport-project/taksi/commit/c0dc20982a83cad45ac384bc2920314db3b83449))
+* **ci:** force reset origin with another fixed typo ([64fdadc](https://github.com/uport-project/taksi/commit/64fdadcea164bd9426b90f86fb4dff932db39eb7))
+* **ci:** force reset origin with fixed typo ([c7b740b](https://github.com/uport-project/taksi/commit/c7b740b17c70062cf2673116ebee69121f7736ef))
+* **ci:** fumble with origin ([4e25073](https://github.com/uport-project/taksi/commit/4e250731f3d9020e57c1259050f47461b6182c40))
+* **ci:** is it the secrets again? ([677b6db](https://github.com/uport-project/taksi/commit/677b6db5d257a7d53a162474121bb8e635ccd958))
+* **ci:** is it the secrets? ([d2d9bd4](https://github.com/uport-project/taksi/commit/d2d9bd48932713b25265091bb5c0961182df0d32))
+* **ci:** omit creating a release ([72cb022](https://github.com/uport-project/taksi/commit/72cb02251204e9a08a2b6b3c76b210f304b41f4b))
+* **ci:** omit verifying access ([559cb0a](https://github.com/uport-project/taksi/commit/559cb0ac6141d35750de98625800ae857bab58c6))
+* **ci:** pass with no test matches ([e484144](https://github.com/uport-project/taksi/commit/e484144c7fac17d9eb76c60bf459c96ee2e60624))
+* **ci:** remove .git from origin url ([0546a98](https://github.com/uport-project/taksi/commit/0546a9822583235a5a2a24a828cabfc8dc11b875))
+* **ci:** remove gh_user from git coords ([db76e22](https://github.com/uport-project/taksi/commit/db76e22f6df1e5fcb091f89355090620856656d8))
+* **ci:** update repository links ([e8b3b0d](https://github.com/uport-project/taksi/commit/e8b3b0d912fc200d60299a64505c9119879a7e8c))
+* **ci:** use secrets directly ([31626c4](https://github.com/uport-project/taksi/commit/31626c4260a9928ece24ad4312ff8d2c4d8647e9))
+
+
+
+
+
 # [4.2.0](https://github.com/uport-project/taksi/compare/v4.1.0...v4.2.0) (2020-12-15)
 
 
