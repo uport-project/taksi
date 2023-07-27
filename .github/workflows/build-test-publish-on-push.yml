@@ -71,7 +71,7 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: test123
           POSTGRES_PORT: 5432
-        run: pnpm test:integration --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+        run: pnpm test:integration --shard=${{ matrix.shard }}/${{ strategy.job-total }} --passWithNoTests
       - run: mv coverage/coverage-final.json coverage/${{matrix.shard}}.json
       - uses: actions/upload-artifact@v3
         with:
